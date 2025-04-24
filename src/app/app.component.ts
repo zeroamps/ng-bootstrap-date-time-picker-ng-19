@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'ng-bootstrap-date-time-picker';
-}
+export class AppComponent {}
