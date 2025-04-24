@@ -1,0 +1,64 @@
+<div class="modal-body">
+  <div class="d-flex justify-content-center border bg-light rounded small text-center mb-1 p-1">
+    <div class="mx-1 w-50">
+      <div>From</div>
+      <div>{{ formatDate(fromDate) }}</div>
+    </div>
+    <div class="mx-1 w-50">
+      <div>To</div>
+      <div>
+        {{ formatDate(toDate) }}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column justify-content-center custom-date-time-picker">
+    <ngb-datepicker
+      #datepicker
+      weekdays="short"
+      [dayTemplate]="dayTemplate"
+      (dateSelect)="dateSelected($event)"
+      [minDate]="minDate" />
+    <ng-template #dayTemplate let-date let-currentMonth="currentMonth">
+      <span
+        class="day-template"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        [class.outside]="isOutside(date, currentMonth)"
+        [class.past]="isPast(date)">
+        {{ date.day }}
+      </span>
+    </ng-template>
+    <div class="d-flex mt-1">
+      <div class="input-group">
+        <label class="input-group-text" for="fromTime">
+          <i class="fa-solid fa-clock"></i>
+        </label>
+        <select class="form-control form-control-sm rounded-0" id="fromTime" [formControl]="fromTimeControl">
+          @for (time of timeOptions; track $index) {
+            <option [value]="time">{{ time }}</option>
+          }
+        </select>
+      </div>
+      <div class="input-group">
+        <select class="form-control form-control-sm rounded-0" id="toTime" [formControl]="toTimeControl">
+          @for (time of timeOptions; track $index) {
+            <option [value]="time">{{ time }}</option>
+          }
+        </select>
+        <label class="input-group-text" for="toTime">
+          <i class="fa-solid fa-clock"></i>
+        </label>
+      </div>
+    </div>
+  </div>
+  @if (error) {
+    <div class="alert alert-danger m-0 mt-1 small">
+      {{ error }}
+    </div>
+  }
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="dismiss()">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+  <button type="button" ngbAutofocus class="btn btn-primary" (click)="confirm()">Confirm</button>
+</div>

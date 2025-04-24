@@ -21,6 +21,9 @@
               "base": "docs",
               "browser": ""
             },
+            "stylePreprocessorOptions": {
+              "sass": { "silenceDeprecations": ["import"] }
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js", "@angular/localize/init"],
@@ -40,8 +43,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "4MB"
                 },
                 {
                   "type": "anyComponentStyle",

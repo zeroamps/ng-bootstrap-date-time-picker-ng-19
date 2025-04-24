@@ -1,0 +1,18 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Select dates and times..."
+          [formControl]="dateTimeRangeControl"
+          (click)="select()"
+          readonly />
+        <button class="btn btn-outline-secondary" type="button" (click)="select()">
+          <i class="fa-solid fa-calendar-days"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
